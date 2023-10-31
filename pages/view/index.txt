@@ -1,0 +1,12 @@
+import React from "react";
+import { useRouter } from "next/router";
+
+import ViewArtikelUser from "@/components/RootApp/ViewArtikel";
+
+const ViewArtikel = () => {
+  const router = useRouter();
+
+  return <ViewArtikelUser />;
+};
+
+export default ViewArtikel;
