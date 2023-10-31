@@ -1,0 +1,16 @@
+version: 2.1
+workflows:
+  Build and Deploy to Staging Version:
+    jobs:
+    - deploy_to_production:
+        filters:
+          branches:
+            only: master
+      
+jobs:
+  deploy_to_production:
+    machine: true
+    steps:
+      - run:
+          name: Deploy Source Code to Server Production
+          command: ssh $SSH_USER_KLIKSERVER@$SSH_HOST_KLIKSERVER 'cd /home/thinkepic.id_v2 && git pull origin master &&  docker container restart thinkepic.id-fe'
