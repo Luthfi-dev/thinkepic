@@ -18,15 +18,13 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Skeleton from "@mui/material/Skeleton";
 import { artikelUser, publicApi } from "../../../utils/globals";
-import Image from 'next/image'
+import Image from "next/image";
 
 const CardArtikel = ({ pKategori, categories }) => {
-
- 
   const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
-  
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
+
   const [artikels, setArtikels] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
@@ -135,12 +133,12 @@ const CardArtikel = ({ pKategori, categories }) => {
           <Skeleton variant="text" width="100%" height={400} animation="wave" />
         ) : (
           <>
-          <Image 
-className="uji_gambar"
-                  src={imageSrc} 
-                  layout='fill' className="img "
-                  loader={imageLoader}
-                  />
+            <Image
+              src={imageSrc}
+              layout="fill"
+              className="img"
+              loader={imageLoader}
+            />
             <CardHeader
               title="New Artikels"
               sx={{
@@ -192,7 +190,6 @@ className="uji_gambar"
                               marginRight: 2,
                             }}
                           />
-                            
                         </ListItemAvatar>
                         <ListItemText
                           primary={
