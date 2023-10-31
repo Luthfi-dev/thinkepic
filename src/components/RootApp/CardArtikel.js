@@ -20,6 +20,11 @@ import Skeleton from "@mui/material/Skeleton";
 import { artikelUser, publicApi } from "../../../utils/globals";
 import Image from 'next/image'
 
+
+  const imageLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`
+  }
+
 const CardArtikel = ({ pKategori, categories }) => {
 
  
