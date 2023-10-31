@@ -135,6 +135,12 @@ const CardArtikel = ({ pKategori, categories }) => {
           <Skeleton variant="text" width="100%" height={400} animation="wave" />
         ) : (
           <>
+          <Image 
+className="uji_gambar"
+                  src={imageSrc} 
+                  layout='fill' className="img "
+                  loader={imageLoader}
+                  />
             <CardHeader
               title="New Artikels"
               sx={{
@@ -186,11 +192,7 @@ const CardArtikel = ({ pKategori, categories }) => {
                               marginRight: 2,
                             }}
                           />
-                            <Image 
-                  src={imageSrc} 
-                  layout='fill' className="img "
-                  loader={imageLoader}
-                  />
+                            
                         </ListItemAvatar>
                         <ListItemText
                           primary={
