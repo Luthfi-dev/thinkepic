@@ -26,11 +26,6 @@ import Image from 'next/image'
   }
 
 const CardArtikel = ({ pKategori, categories }) => {
-
- 
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
   
   const [artikels, setArtikels] = useState([]);
   const [hasMore, setHasMore] = useState(true);
