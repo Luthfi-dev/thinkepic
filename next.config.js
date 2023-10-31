@@ -2,6 +2,14 @@
 module.exports = {
   images: {
     domains: ["thinkepic.id"],
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "thinkepic.id",
+    //     port: "9000",
+    //     pathname: "/apiapp/media/**",
+    //   },
+    // ],
   },
 };
 
