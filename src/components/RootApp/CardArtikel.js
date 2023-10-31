@@ -20,11 +20,6 @@ import Skeleton from "@mui/material/Skeleton";
 import { artikelUser, publicApi } from "../../../utils/globals";
 import Image from 'next/image'
 
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
-
 const CardArtikel = ({ pKategori, categories }) => {
   
   const [artikels, setArtikels] = useState([]);
@@ -135,12 +130,6 @@ const CardArtikel = ({ pKategori, categories }) => {
           <Skeleton variant="text" width="100%" height={400} animation="wave" />
         ) : (
           <>
-          <Image 
-className="uji_gambar"
-                  src={imageSrc} 
-                  layout='fill' className="img "
-                  loader={imageLoader}
-                  />
             <CardHeader
               title="New Artikels"
               sx={{
