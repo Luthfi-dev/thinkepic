@@ -50,6 +50,10 @@ export const CardListArtikel = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [penulisMap, setPenulisMap] = useState({});
 
+  const imageLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
+
   useEffect(() => {
     fetchData();
   }, [page]);
@@ -271,6 +275,7 @@ export const CardListArtikel = () => {
                         width={300}
                         height={200}
                         style={{ objectFit: "cover", width: "100%" }}
+                        loader={imageLoader}
                       />
                     </CardMedia>
 
