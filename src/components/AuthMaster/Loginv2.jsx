@@ -189,7 +189,7 @@ const handleSubmitLogin = async (event) => {
 
       if (response.data.length > 0) {
         showDynamicAlert(
-          `Email sudah terdaftar sebagai verifikator. Silahkan lakukan login.`,
+          `Email sudah terdaftar sebagai Penyetuju. Silahkan lakukan login.`,
           "warning"
         );
       } else {
