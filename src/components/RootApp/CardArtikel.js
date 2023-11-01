@@ -19,7 +19,9 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Skeleton from "@mui/material/Skeleton";
 import { artikelUser, publicApi } from "../../../utils/globals";
 import Image from 'next/image'
-
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
 const CardArtikel = ({ pKategori, categories }) => {
   
   const [artikels, setArtikels] = useState([]);
@@ -141,6 +143,7 @@ const CardArtikel = ({ pKategori, categories }) => {
                 marginLeft: "-5px",
               }}
             />
+               
             <List className="p-2">
               {artikels.length < 1 ? (
                 <p>Belum ada artikel dengan kategori tersebut</p>
@@ -181,7 +184,10 @@ const CardArtikel = ({ pKategori, categories }) => {
                               marginRight: 2,
                             }}
                           />
-                            
+                             <Image 
+                                src={imageSrc}
+                                loader={imageLoader}
+                                alt="" layout="fill" className="img symbol  "/>
                         </ListItemAvatar>
                         <ListItemText
                           primary={
