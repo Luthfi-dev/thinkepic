@@ -240,7 +240,7 @@ export const CardListArtikel = () => {
         <>
           <Grid container spacing={2}>
             {artikels.map((artikel, index) => (
-               <Image 
+               <Image key={'index_gambar_' + index}
                                 src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
                                 loader={imageLoader}
                                 alt="" layout="fill" className="tes_gambar  "/>
