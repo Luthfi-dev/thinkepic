@@ -242,9 +242,9 @@ export const CardListArtikel = () => {
             {artikels.map((artikel, index) => (
               <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
          <Image 
-                                src={publicApi + `/${artikel.media}`}
+                                src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
                                 loader={imageLoader}
-                                alt="" layout="fill" className="img symbol  "/>
+                                alt="" layout="fill" className="tes_gambar  "/>
                 <Card>
                   <CardHeader
                     avatar={
