@@ -424,7 +424,7 @@ const handleSubmitLogin = async (event) => {
                     "success"
                   );
                   if(formDataLogin.password === "********") {
-                    router.push("/routes/user");
+                    router.push("/routes/admin");
                   } else {
                     window.location.href = `/auth/login/send-mail?email=${formData.email}`;
                   }

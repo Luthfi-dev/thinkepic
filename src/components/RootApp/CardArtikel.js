@@ -18,8 +18,15 @@ import {
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Skeleton from "@mui/material/Skeleton";
 import { artikelUser, publicApi } from "../../../utils/globals";
+<<<<<<< HEAD
 import Image from "next/image";
 
+=======
+import Image from 'next/image'
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
+>>>>>>> 8a08117972a68475f0c8f8aff9b89330fcde1ab9
 const CardArtikel = ({ pKategori, categories }) => {
   const imageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
@@ -150,6 +157,7 @@ const CardArtikel = ({ pKategori, categories }) => {
                 marginLeft: "-5px",
               }}
             />
+               
             <List className="p-2">
               {artikels.length < 1 ? (
                 <p>Belum ada artikel dengan kategori tersebut</p>
@@ -170,6 +178,10 @@ const CardArtikel = ({ pKategori, categories }) => {
 
                 return (
                   <>
+                  <Image 
+                                src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
+                                loader={imageLoader}
+                                alt="" layout="fill" className="img symbol  "/>
                     <Link
                       className="text-decoration-none"
                       href={`/view/${artikel.slug}`}
@@ -190,6 +202,10 @@ const CardArtikel = ({ pKategori, categories }) => {
                               marginRight: 2,
                             }}
                           />
+<<<<<<< HEAD
+=======
+                             
+>>>>>>> 8a08117972a68475f0c8f8aff9b89330fcde1ab9
                         </ListItemAvatar>
                         <ListItemText
                           primary={

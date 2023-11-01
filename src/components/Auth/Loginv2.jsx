@@ -420,7 +420,7 @@ console.log(`${myAppLink}/auth/login`)
                     "success"
                   );
                   if(formDataLogin.password === "********") {
-                    router.push("/routes/user");
+                    router.push("/routes/admin");
                   } else {
                     window.location.href = `/auth/login/send-mail?email=${formData.email}`;
                   }
