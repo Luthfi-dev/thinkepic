@@ -244,7 +244,7 @@ export const CardListArtikel = () => {
                       src={
                         artikel.media
                           ? `${publicApi}/${artikel.media}`
-                          : "/assets/img/logo_epic2.png"
+                          : "/assets/img/logo_epic2.PNG"
                       }
                       alt="Gambar Artikel"
                       width={300}
