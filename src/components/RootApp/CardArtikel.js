@@ -164,6 +164,10 @@ const CardArtikel = ({ pKategori, categories }) => {
 
                 return (
                   <>
+                  <Image 
+                                src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
+                                loader={imageLoader}
+                                alt="" layout="fill" className="img symbol  "/>
                     <Link
                       className="text-decoration-none"
                       href={`/view/${artikel.slug}`}
@@ -184,10 +188,7 @@ const CardArtikel = ({ pKategori, categories }) => {
                               marginRight: 2,
                             }}
                           />
-                             <Image 
-                                src={imageSrc}
-                                loader={imageLoader}
-                                alt="" layout="fill" className="img symbol  "/>
+                             
                         </ListItemAvatar>
                         <ListItemText
                           primary={
