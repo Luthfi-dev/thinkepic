@@ -9,6 +9,10 @@ import ImageCarousel from "@/components/RootApp/carausel";
 import TabScroll from "@/components/RootApp/NavCategory2";
 import { CardListArtikel } from "@/components/RootApp/CardListArtikel";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `https://thinkepic.id/apiapp/media/1695206675932_image.jpg/${src}?w=${width}&q=${quality || 75}`
+}
+
 const HomeIndex = () => {
   const router = useRouter();
   const [pilihKategori, setPilihKategori] = useState(0);
@@ -57,7 +61,12 @@ const HomeIndex = () => {
         /> */}
         <TabScroll pKategori={setPilihKategori} categories={categories} />
       </div>
-
+            <Image 
+              className="uji_gambar"
+                  src={imageSrc} 
+                  layout='fill' className="img "
+                  loader={imageLoader}
+                  />
       <div
         className="container-fluid col-md-8 mt-5"
         style={{ backgroundColor: "#F5F6F8", borderRadius: "10px" }}
