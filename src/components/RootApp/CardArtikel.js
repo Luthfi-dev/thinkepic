@@ -21,10 +21,14 @@ import { artikelUser, publicApi } from "../../../utils/globals";
 import Image from "next/image";
 
 const CardArtikel = ({ pKategori, categories }) => {
+<<<<<<< HEAD
   const imageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
+=======
+  
+>>>>>>> 4d9ac0fdad33f038331a18f9848e62e2c41dc3ba
   const [artikels, setArtikels] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
@@ -133,12 +137,15 @@ const CardArtikel = ({ pKategori, categories }) => {
           <Skeleton variant="text" width="100%" height={400} animation="wave" />
         ) : (
           <>
+<<<<<<< HEAD
             <Image
               src={imageSrc}
               layout="fill"
               className="img"
               loader={imageLoader}
             />
+=======
+>>>>>>> 4d9ac0fdad33f038331a18f9848e62e2c41dc3ba
             <CardHeader
               title="New Artikels"
               sx={{
