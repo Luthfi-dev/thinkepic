@@ -7,6 +7,10 @@ import { showDynamicAlert } from '../showDynamicAlert';
 import { DataUser } from "@/components/DataUser";
 import { useRouter } from "next/router";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const AdminContent = ({kData, setKData, modal}) => {
   const [isFileSelected, setIsFileSelected] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -27,7 +31,7 @@ const AdminContent = ({kData, setKData, modal}) => {
     modal(false);
     const imageHtml = `
   <div style="width: 500px; height: auto; overflow: hidden;">
-    <center><Image src="${publicApi}/${imageName}" layout="fill" alt="Inserted Image" width="500" /></center>
+    <center><Image src="${publicApi}/${imageName}" layout="fill" alt="Inserted Image" width="500" loader=${imageLoader} /></center>
   </div>
 `;
 
@@ -119,7 +123,8 @@ const fetchData = async () => {
     });
 
       if (response.status === 200) { // Ubah dari response.ok menjadi response.status
-        showDynamicAlert('Media berhasil diunggah', 'successTime');
+        // showDynamicAlert('Media berhasil diunggah', 'successTime');
+        alert('Media berhasil diunggah');
         // router.push("/admin/media")
         fetchData(); // Pastikan bahwa fetchData() bekerja dengan benar untuk memperbarui data.
       } else {
@@ -248,7 +253,7 @@ const renderPagination = () => {
                     {dataAll.map((image) => (
                       <div key={image.id} className="col-md-3 mb-3">
                         <div className="d-flex flex-column align-items-center">
-                          <Image src={`https://ex.luth.my.id/media/${image.nama}`} alt={image.id} width={200} height={200} objectFit="cover" onClick={() => handleMediaClick(image.nama)} />
+                          <Image src={`${publicApi}/media/${image.nama}`} alt={image.id} width={200} height={200} objectFit="cover" onClick={() => handleMediaClick(image.nama)} />
                           <button onClick={() => deleteMedia(image.id)} className="btn btn-danger mt-2"><i className='bi bi-trash'></i></button>
                         </div>
                       </div>

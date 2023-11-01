@@ -91,7 +91,8 @@ const fetchData = async () => {
     });
 
       if (response.status === 200) { // Ubah dari response.ok menjadi response.status
-        showDynamicAlert('Media berhasil diunggah', 'successTime');
+        // showDynamicAlert('Media berhasil diunggah', 'successTime');
+        alert('Media berhasil diunggah');
         // router.push("/admin/media")
         fetchData(); // Pastikan bahwa fetchData() bekerja dengan benar untuk memperbarui data.
       } else {
