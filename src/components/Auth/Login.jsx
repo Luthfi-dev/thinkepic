@@ -49,8 +49,8 @@ const AuthLogin = () => {
       status: null,
     });
 
-    console.log(formData)
-    console.log(formDataLogin)
+    // console.log(formData)
+    // console.log(formDataLogin)
 
 
   const handleChange = async (e) => {
@@ -418,7 +418,7 @@ const handleSubmitLogin = async (event) => {
                 // Handle respons di sini
                 if (postResponse.status === 200) {
                   // Data berhasil disimpan, lakukan tindakan yang sesuai
-                  console.log(postResponse)
+                  // console.log(postResponse)
                   showDynamicAlert(
                     "Akun Berhasil di Daftarkan",
                     "success"
@@ -455,14 +455,14 @@ const handleSubmitLogin = async (event) => {
 
   useEffect(()=>{
     awalan();
-      console.log(statusSSO);
+      // console.log(statusSSO);
 
   },[])
 
     useEffect(()=>{
     awalan();
     setProsesSSOGg(true);
-      console.log(statusSSO);
+      // console.log(statusSSO);
 
   },[formDataLogin.email])
 

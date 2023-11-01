@@ -45,8 +45,8 @@ const AuthLogin = () => {
       status: null,
     });
 
-    console.log(formData)
-    console.log(formDataLogin)
+    // console.log(formData)
+    // console.log(formDataLogin)
 
 
   const handleChange = async (e) => {
@@ -451,14 +451,14 @@ console.log(`${myAppLink}/auth/login`)
 
   useEffect(()=>{
     awalan();
-      console.log(statusSSO);
+      // console.log(statusSSO);
 
   },[])
 
     useEffect(()=>{
     awalan();
     setProsesSSOGg(true);
-      console.log(statusSSO);
+      // console.log(statusSSO);
 
   },[formDataLogin.email])
 

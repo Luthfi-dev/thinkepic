@@ -123,7 +123,7 @@ const MyForm = () => {
       };
 
       fetchArticleData();
-      console.log("data atikel", dataArtikel);
+      // console.log("data atikel", dataArtikel);
     }
   }, [id]);
 
@@ -191,7 +191,7 @@ const MyForm = () => {
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
-    console.log("Input berubah==:", name, value, formData);
+    // console.log("Input berubah==:", name, value, formData);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -214,11 +214,11 @@ const MyForm = () => {
       const response = await fifiAxios.get(`${menuApi}/${nilai}`);
       const categoryData = response.data;
       setDataSubMenu(categoryData);
-      console.log("ini data submenu", nilai, dataSubMenu);
+      // console.log("ini data submenu", nilai, dataSubMenu);
     } catch (error) {
       console.error("Error fetching data:", error);
       setDataSubMenu([]);
-      console.log("ini data submenu", nilai, dataSubMenu);
+      // console.log("ini data submenu", nilai, dataSubMenu);
     }
   };
 
@@ -252,7 +252,7 @@ const MyForm = () => {
       const response = await fifiAxios.get(menuApi);
       const categoryData = response.data;
       setDataMenu(categoryData);
-      console.log(dataMenu);
+      // console.log(dataMenu);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

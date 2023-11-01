@@ -51,7 +51,7 @@ const MyForm = () => {
   const fifiAxios = configureAxios();
   const myUser = DataUser();
   const UserId = myUser !== null ? myUser.id_user : null;
-  console.log(UserId);
+  // console.log(UserId);
 
   useEffect(() => {
     // Fungsi untuk menangani peristiwa scroll
@@ -125,7 +125,7 @@ const MyForm = () => {
   }, [id]);
 
   // console.log(formData);
-  console.log("data atikel", dataArtikel);
+  // console.log("data atikel", dataArtikel);
   // BAGIAN MENGHANDLE slugs
 
   // Fungsi untuk mengambil data dari API berdasarkan judul
@@ -265,7 +265,7 @@ const MyForm = () => {
       // END DRAF INFO
 
       const adaYangSama = hasilData.some((item) => item.id === formData.id);
-      console.log("samaa", adaYangSama);
+      // console.log("samaa", adaYangSama);
 
       if (adaYangSama) {
         // sebelum di put cek dulu status artikelnya
@@ -302,7 +302,7 @@ const MyForm = () => {
             },
           }
         );
-        console.log("update", response);
+        // console.log("update", response);
         return true;
       } else {
         // Contoh penggunaan
@@ -323,7 +323,7 @@ const MyForm = () => {
             "Content-Type": "application/json",
           },
         });
-        console.log("post", response);
+        // console.log("post", response);
         return false;
       }
     } catch (error) {
@@ -336,7 +336,7 @@ const MyForm = () => {
     e.preventDefault();
     showDynamicAlert("Loading..", "loading");
     const tidakFokus = await tidaFokuslagi();
-    console.log(tidakFokus);
+    // console.log(tidakFokus);
 
     // Contoh penggunaan
     const dataToSend = {
@@ -401,7 +401,7 @@ const MyForm = () => {
     }
 
     postDataToAPI(dataToSend);
-    console.log(dataToSend);
+    // console.log(dataToSend);
 
     // END MENYIMPAN DATA KE API
   };
