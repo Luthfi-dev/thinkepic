@@ -240,112 +240,113 @@ export const CardListArtikel = () => {
         <>
           <Grid container spacing={2}>
             {artikels.map((artikel, index) => (
-              <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
-         <Image 
+               <Image 
                                 src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
                                 loader={imageLoader}
                                 alt="" layout="fill" className="tes_gambar  "/>
-                <Card>
-                  <CardHeader
-                    avatar={
-                      <Avatar className="bg-app" aria-label="recipe">
-                        {inisialUser(penulisMap[artikel.user_id] || "U")}
-                      </Avatar>
-                    }
-                    action={
-                      <IconButton
-                        aria-label="settings"
-                        onClick={() => handleExpandClick(index)}
-                      >
-                        <MoreVertIcon />
-                      </IconButton>
-                    }
-                    title={penulisMap[artikel.user_id] || ""}
-                    subheader={`${calculateTimeAgo(artikel.updated_at)}`}
-                  />
-                  <Link
-                    className="text-decoration-none"
-                    href={`/view/${artikel.slug}`}
-                  >
-                    <CardMedia>
-                      <Image
-                        src={
-                          artikel.media
-                            ? `${publicApi}/${artikel.media}`
-                            : "/assets/img/logo_epic2.png"
-                        }
-                        alt="Gambar Artikel"
-                        width={300}
-                        height={200}
-                        style={{ objectFit: "cover", width: "100%" }}
-                      />
-                    </CardMedia>
+              // <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
+        
+              //   <Card>
+              //     <CardHeader
+              //       avatar={
+              //         <Avatar className="bg-app" aria-label="recipe">
+              //           {inisialUser(penulisMap[artikel.user_id] || "U")}
+              //         </Avatar>
+              //       }
+              //       action={
+              //         <IconButton
+              //           aria-label="settings"
+              //           onClick={() => handleExpandClick(index)}
+              //         >
+              //           <MoreVertIcon />
+              //         </IconButton>
+              //       }
+              //       title={penulisMap[artikel.user_id] || ""}
+              //       subheader={`${calculateTimeAgo(artikel.updated_at)}`}
+              //     />
+              //     <Link
+              //       className="text-decoration-none"
+              //       href={`/view/${artikel.slug}`}
+              //     >
+              //       <CardMedia>
+              //         <Image
+              //           src={
+              //             artikel.media
+              //               ? `${publicApi}/${artikel.media}`
+              //               : "/assets/img/logo_epic2.png"
+              //           }
+              //           alt="Gambar Artikel"
+              //           width={300}
+              //           height={200}
+              //           style={{ objectFit: "cover", width: "100%" }}
+              //         />
+              //       </CardMedia>
 
-                    <CardContent className="mt-2">
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={
-                          window.innerWidth <= 600
-                            ? {
-                                fontSize: "11pt",
-                                fontWeight: "bold",
-                                lineHeight: "1",
-                                color: "rgba(0,0,0,0.5)",
-                              }
-                            : {
-                                fontSize: "14pt",
-                                fontWeight: "bold",
-                                lineHeight: "1",
-                                color: "rgba(0,0,0,0.5)",
-                              }
-                        }
-                        gutterBottom
-                      >
-                        {potongDiSpasi(filterHTMLTags(artikel.judul), 45)}
-                      </Typography>
-                    </CardContent>
-                  </Link>
-                  <CardActions disableSpacing>
-                    {/* <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton> */}
-                    <IconButton
-                      aria-label="share"
-                      onClick={() =>
-                        handleShareClick(artikel.judul, artikel.slug)
-                      }
-                    >
-                      <ShareIcon className="color-app2" />
-                    </IconButton>
+              //       <CardContent className="mt-2">
+              //         <Typography
+              //           variant="body2"
+              //           color="text.secondary"
+              //           sx={
+              //             window.innerWidth <= 600
+              //               ? {
+              //                   fontSize: "11pt",
+              //                   fontWeight: "bold",
+              //                   lineHeight: "1",
+              //                   color: "rgba(0,0,0,0.5)",
+              //                 }
+              //               : {
+              //                   fontSize: "14pt",
+              //                   fontWeight: "bold",
+              //                   lineHeight: "1",
+              //                   color: "rgba(0,0,0,0.5)",
+              //                 }
+              //           }
+              //           gutterBottom
+              //         >
+              //           {potongDiSpasi(filterHTMLTags(artikel.judul), 45)}
+              //         </Typography>
+              //       </CardContent>
+              //     </Link>
+              //     <CardActions disableSpacing>
+              //       {/* <IconButton aria-label="add to favorites">
+              //         <FavoriteIcon />
+              //       </IconButton> */}
+              //       <IconButton
+              //         aria-label="share"
+              //         onClick={() =>
+              //           handleShareClick(artikel.judul, artikel.slug)
+              //         }
+              //       >
+              //         <ShareIcon className="color-app2" />
+              //       </IconButton>
 
-                    <IconButton
-                      className="color-app"
-                      aria-label="show more"
-                      onClick={() => handleExpandClick(index)}
-                      aria-expanded={expandedMap[index]}
-                    >
-                      <ExpandMoreIcon />
-                    </IconButton>
-                  </CardActions>
-                  <Collapse
-                    in={expandedMap[index]}
-                    timeout="auto"
-                    unmountOnExit
-                  >
-                    <CardContent>
-                      <Typography paragraph>
-                        Deskripsi :{" "}
-                        {potongDiSpasi(
-                          filterHTMLTags(artikel.isi),
-                          window.innerWidth > 600 ? 150 : 100
-                        )}
-                      </Typography>
-                      {/* ... Other content ... */}
-                    </CardContent>
-                  </Collapse>
-                </Card>
-              </Grid>
+              //       <IconButton
+              //         className="color-app"
+              //         aria-label="show more"
+              //         onClick={() => handleExpandClick(index)}
+              //         aria-expanded={expandedMap[index]}
+              //       >
+              //         <ExpandMoreIcon />
+              //       </IconButton>
+              //     </CardActions>
+              //     <Collapse
+              //       in={expandedMap[index]}
+              //       timeout="auto"
+              //       unmountOnExit
+              //     >
+              //       <CardContent>
+              //         <Typography paragraph>
+              //           Deskripsi :{" "}
+              //           {potongDiSpasi(
+              //             filterHTMLTags(artikel.isi),
+              //             window.innerWidth > 600 ? 150 : 100
+              //           )}
+              //         </Typography>
+              //         {/* ... Other content ... */}
+              //       </CardContent>
+              //     </Collapse>
+              //   </Card>
+              // </Grid>
             ))}
           </Grid>
         </>
