@@ -5,6 +5,10 @@ import Link from "next/link";
 import configureAxios from "../../../pages/axios-config";
 import { DataUser } from "@/components/DataUser";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const DataPosting = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('draf');
@@ -108,6 +112,7 @@ const DataPosting = () => {
                   objectFit="contain"
                   src={`${publicApi}/${media}`}
                   alt="foto thumbnail"
+                  loader={imageLoader}
                 />
               ) : (
                 <Image

@@ -1,12 +1,33 @@
-// // next.config.js
-
-const imageLoader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
-};
+// next.config.js
+// const { customImageLoader } = require("./lib/imageLoader");
 
 module.exports = {
   images: {
+    // loader: customImageLoader, // Menggunakan customImageLoader sebagai loader
     domains: ["thinkepic.id"],
-    loader: imageLoader,
   },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/(.*)",
+  //       headers: [
+  //         {
+  //           key: "Content-Security-Policy",
+  //           value: "default-src 'self'; script-src 'none'; sandbox;",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
+  // webpack: (config) => {
+  //   config.module.rules.push({
+  //     test: /imageLoader\.js/,
+  //     use: [
+  //       {
+  //         loader: "url-loader",
+  //       },
+  //     ],
+  //   });
+  //   return config;
+  // },
 };
