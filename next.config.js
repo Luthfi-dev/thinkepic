@@ -1,29 +1,12 @@
 // // next.config.js
+
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 module.exports = {
   images: {
     domains: ["thinkepic.id"],
-    // remotePatterns: [
-    //   {
-    //     protocol: "https",
-    //     hostname: "thinkepic.id",
-    //     port: "9000",
-    //     pathname: "/apiapp/media/**",
-    //   },
-    // ],
+    loader: imageLoader,
   },
 };
-
-// next.config.js
-// module.exports = {
-//   images: {
-//     domains: ["localhost"],
-//     remotePatterns: [
-//       {
-//         protocol: "http",
-//         hostname: "localhost",
-//         port: "9000",
-//         pathname: "/media/**",
-//       },
-//     ],
-//   },
-// };
