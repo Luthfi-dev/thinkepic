@@ -31,7 +31,7 @@ const AdminContent = ({kData, setKData, modal}) => {
     modal(false);
     const imageHtml = `
   <div style="width: 500px; height: auto; overflow: hidden;">
-    <center><Image src="${publicApi}/${imageName}" layout="fill" alt="Inserted Image" width="500" loader=${imageLoader} /></center>
+    <center><Image src="${publicApi}/${imageName}" layout="fill" alt="Inserted Image" width="500" /></center>
   </div>
 `;
 
@@ -253,7 +253,7 @@ const renderPagination = () => {
                     {dataAll.map((image) => (
                       <div key={image.id} className="col-md-3 mb-3">
                         <div className="d-flex flex-column align-items-center">
-                          <Image src={`${publicApi}/media/${image.nama}`} alt={image.id} width={200} height={200} objectFit="cover" onClick={() => handleMediaClick(image.nama)} />
+                          <Image src={`${publicApi}/${image.nama}`} alt={image.id} width={200} height={200} objectFit="cover" onClick={() => handleMediaClick(image.nama)} />
                           <button onClick={() => deleteMedia(image.id)} className="btn btn-danger mt-2"><i className='bi bi-trash'></i></button>
                         </div>
                       </div>
