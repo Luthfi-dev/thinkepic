@@ -41,6 +41,9 @@ import {
   Typography,
 } from "@mui/material";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`
+}
 export const CardListArtikel = () => {
   const [artikels, setArtikels] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -238,6 +241,10 @@ export const CardListArtikel = () => {
           <Grid container spacing={2}>
             {artikels.map((artikel, index) => (
               <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
+         <Image 
+                                src={publicApi + `/${artikel.media}`}
+                                loader={imageLoader}
+                                alt="" layout="fill" className="img symbol  "/>
                 <Card>
                   <CardHeader
                     avatar={
