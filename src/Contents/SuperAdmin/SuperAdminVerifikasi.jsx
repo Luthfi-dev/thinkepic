@@ -124,7 +124,7 @@ const hapusArtikel = async (artikelId) => {
                 width={100}
                 height={50}
                 objectFit="contain"
-                src={`${publicApi}/default/no_picture.png`}
+                src={"/assets/img/logo_epic2.PNG"}
                 alt="foto thunbnail no image"
               />
             )}
