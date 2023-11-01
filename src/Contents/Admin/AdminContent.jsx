@@ -7,9 +7,7 @@ import Link from "next/link";
 import configureAxios from "../../../pages/axios-config";
 import { DataUser } from "@/components/DataUser";
 
-const imageLoader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
-};
+
 
 const MasterAdminContent = () => {
     const [dataAll, setDataAll] = useState([]);

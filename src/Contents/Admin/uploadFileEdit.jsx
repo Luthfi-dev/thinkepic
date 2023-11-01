@@ -5,6 +5,10 @@ import Button from 'react-bootstrap/Button';
 import SelectImage from "./AdminMediaForArticel";
 import { linkApi, publicApi } from "../../../utils/globals";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const FileUploadCard = ({ formData, setFormData }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showModal, setShowModal] = useState(false);
