@@ -11,7 +11,7 @@ import TabScroll from "@/components/RootApp/NavCategory2";
 import { CardListArtikel } from "@/components/RootApp/CardListArtikel";
 
 const imageLoader = ({ src, width, quality }) => {
-  return `https://thinkepic.id/apiapp/media/1695206675932_image.jpg/${src}?w=${width}&q=${quality || 75}`
+  return `${src}?w=${width}&q=${quality || 75}`
 }
 
 const HomeIndex = () => {
@@ -64,7 +64,7 @@ const HomeIndex = () => {
       </div>
             <Image 
               className="uji_gambar"
-                  src={imageSrc} 
+                  src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'} 
                   layout='fill' className="img "
                   loader={imageLoader}
                     width={500}
