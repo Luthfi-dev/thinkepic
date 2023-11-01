@@ -5,6 +5,10 @@ import Button from 'react-bootstrap/Button';
 import SelectImage from "./MasterAdminMediaForArticel";
 import { linkApi, publicApi } from "../../../utils/globals";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const FileUploadCard = ({ formData }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +38,7 @@ const FileUploadCard = ({ formData }) => {
       <label htmlFor="file-upload" className="upload-button">
         {!selectedFile && (
           <b>
-          <Image src="/assets/svg/upload.svg" width={300} height={150} objectFit="contain" onClick={openModal} alt="logo upload postingan" />
+          <Image src="/assets/svg/upload.svg" width={300} height={150} objectFit="contain" onClick={openModal} alt="logo upload postingan" loader={imageLoader}/>
           <label className="bg-light w-100"><b>Select file</b></label>
           </b>
         )}
@@ -48,6 +52,7 @@ const FileUploadCard = ({ formData }) => {
             alt="select media for content"
             layout="fill"
             style={{borderRadius:"10px"}}
+            loader={imageLoader}
           />
         ) : formData.media.endsWith('.mp4') ? (
           // Jika formData.media adalah video (contoh: .mp4)

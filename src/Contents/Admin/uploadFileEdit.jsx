@@ -31,7 +31,7 @@ const handleDeleteImage = () => {
       <label htmlFor="file-upload" className="upload-button">
         {!formData.media ? (
           <b>
-            <Image src="/assets/svg/upload.svg" width={300} height={150} objectFit="contain" onClick={openModal} alt="logo upload postingan" />
+            <Image src="/assets/svg/upload.svg" width={300} height={150} objectFit="contain" onClick={openModal} alt="logo upload postingan" loader={imageLoader}/>
             <label className="bg-light w-100"><b>Select file</b></label>
           </b>
         ) : (
@@ -43,6 +43,7 @@ const handleDeleteImage = () => {
                 alt="select media for content"
                 layout="fill"
                 style={{borderRadius:"10px"}}
+                loader={imageLoader}
               />
             ) : formData.media.endsWith('.mp4') ? (
               // Jika formData.media adalah video (contoh: .mp4)

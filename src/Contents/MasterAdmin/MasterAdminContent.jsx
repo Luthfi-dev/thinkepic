@@ -7,6 +7,10 @@ import Link from "next/link";
 import configureAxios from "../../../pages/axios-config";
 import { DataUser } from "@/components/DataUser";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const MasterAdminContent = () => {
     const [dataAll, setDataAll] = useState([]);
     const [dataAllActivity, setDataAllActivity] = useState([]);
@@ -145,6 +149,7 @@ const renderDataAll = (dataAll) => {
               objectFit="contain"
               src={`${publicApi}/${media}`}
               alt="foto thunbnail"
+              loader={imageLoader}
             />
           ) : (
             // Jika ekstensi bukan gambar, tampilkan thumbnail video dari path yang sesuai

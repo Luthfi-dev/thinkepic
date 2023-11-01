@@ -7,6 +7,10 @@ import Link from "next/link";
 import configureAxios from "../../../pages/axios-config";
 import { DataUser } from "@/components/DataUser";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const SuperAdminContent = () => {
     const [dataAll, setDataAll] = useState([]);
     const [dataAllActivity, setDataAllActivity] = useState([]);
@@ -21,7 +25,7 @@ const SuperAdminContent = () => {
    async function fetchData() {
       if (myUser !== null) {
         try {
-          console.log(UserId);
+          // console.log(UserId);
           const response1 = await fifiAxios.get(`${artikelPageApi}?jumlah=3&status=proses&id_user=${UserId}`, {
             headers: {
               "Content-Type": "application/json",
@@ -37,7 +41,7 @@ const SuperAdminContent = () => {
               "Content-Type": "application/json",
             },
           });
-          console.log(response1);
+          // console.log(response1);
 
           const data1 = response1.data.data;
           const data2 = response2.data.data;
@@ -145,6 +149,7 @@ const renderDataAll = (dataAll) => {
               objectFit="contain"
               src={`${publicApi}/${media}`}
               alt="foto thunbnail"
+              loader={imageLoader}
             />
           ) : (
             // Jika ekstensi bukan gambar, tampilkan thumbnail video dari path yang sesuai
@@ -189,7 +194,7 @@ const renderDataAllActivity = (dataAllActivity) => {
     const status = activity.status;
     
     // Lakukan sesuatu dengan status dan nomor indeks, misalnya mencetaknya ke konsol
-    // console.log(`Status ke-${index}: ${status}`);
+    console.log(`Status ke-${index}: ${status}`);
   });
 };
 

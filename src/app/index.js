@@ -70,7 +70,7 @@ const HomeIndex = () => {
         className="container-fluid col-md-8 mt-5"
         style={{ backgroundColor: "#F5F6F8", borderRadius: "10px" }}
       >
-        <CardListArtikel />
+        <CardListArtikel className="mb-3" />
         {/* <div className="col-lg-8 mt-2 bordered">
             <CardArtikel
               categories={categories}

@@ -5,6 +5,10 @@ import Link from "next/link";
 import configureAxios from "../../../pages/axios-config";
 import { showDynamicAlert } from "../showDynamicAlert";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const DataPosting = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('proses');
@@ -109,6 +113,7 @@ const hapusArtikel = async (artikelId) => {
                   objectFit="contain"
                   src={`${publicApi}/${media}`}
                   alt="foto thunbnail"
+                  loader={imageLoader}
                 />
               ) : (
                 <Image
