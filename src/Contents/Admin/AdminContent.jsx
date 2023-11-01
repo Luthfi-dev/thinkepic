@@ -149,6 +149,7 @@ const renderDataAll = (dataAll) => {
               objectFit="contain"
               src={`${publicApi}/${media}`}
               alt="foto thunbnail"
+              loader={imageLoader}
             />
           ) : (
             // Jika ekstensi bukan gambar, tampilkan thumbnail video dari path yang sesuai
@@ -158,7 +159,6 @@ const renderDataAll = (dataAll) => {
               objectFit="contain"
               src={`${publicApi}/default/thum_video.png`}
               alt="video  thunbnail"
-              loader={imageLoader}
             />
           )
         ) : (

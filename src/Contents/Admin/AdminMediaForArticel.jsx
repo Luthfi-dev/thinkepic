@@ -7,6 +7,10 @@ import { showDynamicAlert } from '../showDynamicAlert';
 import { DataUser } from "@/components/DataUser";
 import { useRouter } from "next/router";
 
+const imageLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 const AdminContent = ({kData, modal}) => {
   const [isFileSelected, setIsFileSelected] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -25,10 +29,10 @@ const AdminContent = ({kData, modal}) => {
   const handleMediaClick = (imageName) => {
     kData.media = imageName;
     modal(false);
-    console.log(kData);
+    // console.log(kData);
   };
 
-  console.log(publicApi);
+  // console.log(publicApi);
     // GET DATA API
 const fetchData = async () => {
   if (myUser !== null) {
@@ -48,7 +52,7 @@ const fetchData = async () => {
     // Set data ke state
     setDataAll(dataAmbil.data);
     
-    console.log("Data yang diambil:", dataAmbil.data,"total media", totalMedia);
+    // console.log("Data yang diambil:", dataAmbil.data,"total media", totalMedia);
   } catch (error) {
     console.error('Terjadi kesalahan:', error);
   }
@@ -109,7 +113,7 @@ const fetchData = async () => {
     const response = await fifiAxios.delete(`${linkApi}/${mediaId}`);
 
     if (response.status === 200 || response.status === 204) {
-      console.log('Media berhasil dihapus.');
+      // console.log('Media berhasil dihapus.');
       fetchData(); // Anda mungkin perlu mengeksekusi fungsi fetchData() untuk memperbarui data setelah penghapusan.
     } else {
       console.error('Gagal menghapus media.');
@@ -221,7 +225,7 @@ const renderPagination = () => {
                     {dataAll.map((image) => (
                       <div key={image.id} className="col-md-3 mb-3">
                         <div className="d-flex flex-column align-items-center">
-                          <Image src={`${publicApi}/${image.nama}`} alt={image.id} width={200} height={200} objectFit="cover" onClick={() => handleMediaClick(image.nama)} />
+                          <Image src={`${publicApi}/${image.nama}`} alt={image.id} width={200} height={200} objectFit="cover" onClick={() => handleMediaClick(image.nama)} loader={imageLoader} />
                           <button onClick={() => deleteMedia(image.id)} className="btn btn-danger mt-2"><i className='bi bi-trash'></i></button>
                         </div>
                       </div>
