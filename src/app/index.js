@@ -62,14 +62,10 @@ const HomeIndex = () => {
         /> */}
         <TabScroll pKategori={setPilihKategori} categories={categories} />
       </div>
-            <Image 
-              className="uji_gambar"
-                  src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'} 
-                  layout='fill' className="img "
-                  loader={imageLoader}
-                    width={500}
-      height={500}
-                  />
+    <Image 
+                                src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
+                                loader={imageLoader}
+                                alt="" layout="fill" className="img symbol  "/>
       <div
         className="container-fluid col-md-8 mt-5"
         style={{ backgroundColor: "#F5F6F8", borderRadius: "10px" }}
