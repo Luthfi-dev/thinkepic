@@ -267,7 +267,7 @@ const handleSubmitLogin = async (event) => {
     // const tenantID = "26ae6adf-61be-443f-8dc4-6531b61a9a38"
     const clientID = client_ID;
     const tenantID = tenan_ID; 
-    const directURI = `${myAppLink}/auth/login`;
+    const directURI = `${myAppLink}/auth/verifikator`;
     const fullURL =
       "https://login.microsoftonline.com/" +
       tenantID +
@@ -282,7 +282,7 @@ const handleSubmitLogin = async (event) => {
   const handleLoginGoogle = () => {
     // const clientID = "943624068454-oo58hl2hh7ft9kv4m2t5l4fvslbq96ah.apps.googleusercontent.com";
     const clientID = GOOGLE_CLIENT_ID;
-    const redirectURI = `${myAppLink}/auth/login`;
+    const redirectURI = `${myAppLink}/auth/verifikator`;
     const scope = "openid profile email";
 
     const fullURL = `https://accounts.google.com/o/oauth2/auth?client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scope}&response_type=token`;
