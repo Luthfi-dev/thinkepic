@@ -67,6 +67,8 @@ const HomeIndex = () => {
                   src={imageSrc} 
                   layout='fill' className="img "
                   loader={imageLoader}
+                    width={500}
+      height={500}
                   />
       <div
         className="container-fluid col-md-8 mt-5"
