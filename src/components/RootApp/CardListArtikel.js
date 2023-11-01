@@ -42,20 +42,16 @@ import {
 } from "@mui/material";
 
 const imageLoader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 75}`
-}
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
+
 export const CardListArtikel = () => {
   const [artikels, setArtikels] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
-  //   const [viewAllData, setViewAllData] = useState("&jumlah=1");
-  const [expandedMap, setExpandedMap] = React.useState({}); // Gunakan objek untuk melacak status ekspansi setiap kartu
+  const [expandedMap, setExpandedMap] = React.useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [penulisMap, setPenulisMap] = useState({});
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`;
-  };
 
   useEffect(() => {
     fetchData();
@@ -76,9 +72,6 @@ export const CardListArtikel = () => {
         setArtikels([...artikels, ...data]);
       }
 
-      // Periksa apakah isLoading diatur dengan benar
-      //   console.log("isLoading:", isLoading);
-
       if (response) {
         setIsLoading(false);
       }
@@ -88,20 +81,16 @@ export const CardListArtikel = () => {
   };
 
   useEffect(() => {
-    // Fungsi untuk mengambil nama penulis berdasarkan id_user
     const getNamaPenulis = async (id_user) => {
-      //   console.log("Mengambil nama penulis untuk id_user:", id_user);
       try {
         const response = await axios.get(`${getNamaApi}?id=${id_user}`);
         const nama = response.data[0].nama;
-        // console.log("Nama penulis yang diambil:", nama);
         return nama;
       } catch (error) {
         console.error("Terjadi kesalahan saat mengambil data dari API:", error);
       }
     };
 
-    // Mengambil nama penulis untuk setiap artikel
     const fetchNamaPenulis = async () => {
       const namaPenulisMap = {};
 
@@ -117,7 +106,6 @@ export const CardListArtikel = () => {
   }, [artikels]);
 
   const nextView = () => {
-    // console.log(hasMore);
     if (hasMore) {
       setPage(page + 1);
       fetchData();
@@ -139,14 +127,11 @@ export const CardListArtikel = () => {
       return text;
     }
 
-    // Cari posisi spasi terdekat sebelum maxLength
     const lastSpaceIndex = text.lastIndexOf(" ", maxLength);
 
-    // Jika ada spasi, potong hingga spasi tersebut
     if (lastSpaceIndex !== -1) {
       return text.substring(0, lastSpaceIndex) + "..";
     } else {
-      // Jika tidak ada spasi, potong pada maxLength dan tambahkan elipsis
       return text.substring(0, maxLength) + "..";
     }
   };
@@ -173,7 +158,6 @@ export const CardListArtikel = () => {
   };
 
   function handleExpandClick(index) {
-    // Toggle status ekspansi untuk kartu yang diklik
     setExpandedMap((prevExpandedMap) => ({
       ...prevExpandedMap,
       [index]: !prevExpandedMap[index],
@@ -181,18 +165,11 @@ export const CardListArtikel = () => {
   }
 
   function inisialUser(name) {
-    // Membuang spasi di awal dan akhir nama
     name = name.trim();
-
-    // Memisahkan nama menjadi kata-kata
     const words = name.split(" ");
-
-    // Menginisialisasi variabel untuk inisial
     let initials = "";
 
-    // Loop melalui setiap kata dalam nama
     for (const word of words) {
-      // Mengambil karakter pertama dari setiap kata dan mengonversinya ke huruf besar
       const initial = word[0].toUpperCase();
       initials += initial;
     }
@@ -200,7 +177,6 @@ export const CardListArtikel = () => {
     return initials;
   }
 
-  // Fungsi untuk menangani klik tombol share
   function handleShareClick(judul, slug) {
     if (navigator.share) {
       let shareData = {
@@ -218,7 +194,6 @@ export const CardListArtikel = () => {
   return (
     <InfiniteScroll
       dataLength={artikels.length}
-      //   next={fetchData}
       next={() => {
         nextView();
       }}
@@ -230,8 +205,6 @@ export const CardListArtikel = () => {
           sx={{
             height: "50px",
             width: "100%",
-            // background: "url(/assets/svg/component/label-header.svg)",
-            backgroundRepeat: "no-repeat",
             marginLeft: "-5px",
             marginBottom: "15px",
             fontWeight: "bold",
@@ -241,181 +214,75 @@ export const CardListArtikel = () => {
       {isLoading ? (
         <Skeleton variant="text" width="100%" height={400} animation="wave" />
       ) : (
-        <>
-          <Grid container spacing={2}>
-            {artikels.map((artikel, index) => (
-<<<<<<< HEAD
-              <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
-                <Card>
-                  <CardHeader
-                    avatar={
-                      <Avatar className="bg-app" aria-label="recipe">
-                        {inisialUser(penulisMap[artikel.user_id] || "U")}
-                      </Avatar>
+        <Grid container spacing={2}>
+          {artikels.map((artikel, index) => (
+            <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
+              <Card>
+                <CardHeader
+                  avatar={
+                    <Avatar className="bg-app" aria-label="recipe">
+                      {inisialUser(penulisMap[artikel.user_id] || "U")}
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton
+                      aria-label="settings"
+                      onClick={() => handleExpandClick(index)}
+                    >
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title={penulisMap[artikel.user_id] || ""}
+                  subheader={`${calculateTimeAgo(artikel.updated_at)}`}
+                />
+                <Link
+                  className="text-decoration-none"
+                  href={`/view/${artikel.slug}`}
+                >
+                  <CardMedia>
+                    <Image
+                      src={
+                        artikel.media
+                          ? `${publicApi}/${artikel.media}`
+                          : "/assets/img/logo_epic2.png"
+                      }
+                      alt="Gambar Artikel"
+                      width={300}
+                      height={200}
+                      style={{ objectFit: "cover", width: "100%" }}
+                      loader={imageLoader}
+                    />
+                  </CardMedia>
+                </Link>
+                <CardContent className="mt-2">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={
+                      window.innerWidth <= 600
+                        ? {
+                            fontSize: "11pt",
+                            fontWeight: "bold",
+                            lineHeight: "1",
+                            color: "rgba(0,0,0,0.5)",
+                          }
+                        : {
+                            fontSize: "14pt",
+                            fontWeight: "bold",
+                            lineHeight: "1",
+                            color: "rgba(0,0,0,0.5)",
+                          }
                     }
-                    action={
-                      <IconButton
-                        aria-label="settings"
-                        onClick={() => handleExpandClick(index)}
-                      >
-                        <MoreVertIcon />
-                      </IconButton>
-                    }
-                    title={penulisMap[artikel.user_id] || ""}
-                    subheader={`${calculateTimeAgo(artikel.updated_at)}`}
-                  />
-                  <Link
-                    className="text-decoration-none"
-                    href={`/view/${artikel.slug}`}
+                    gutterBottom
                   >
-                    <CardMedia>
-                      <Image
-                        src={
-                          artikel.media
-                            ? `${publicApi}/${artikel.media}`
-                            : "/assets/img/logo_epic2.png"
-                        }
-                        alt="Gambar Artikel"
-                        width={300}
-                        height={200}
-                        style={{ objectFit: "cover", width: "100%" }}
-                        loader={imageLoader}
-                      />
-                    </CardMedia>
-=======
-               <Image key={'index_gambar_' + index}
-                                src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
-                                loader={imageLoader}
-                                alt="" layout="fill" className="tes_gambar  "/>
-              // <Grid item xs={window.innerWidth > 600 ? 3 : 12} key={index}>
-        
-              //   <Card>
-              //     <CardHeader
-              //       avatar={
-              //         <Avatar className="bg-app" aria-label="recipe">
-              //           {inisialUser(penulisMap[artikel.user_id] || "U")}
-              //         </Avatar>
-              //       }
-              //       action={
-              //         <IconButton
-              //           aria-label="settings"
-              //           onClick={() => handleExpandClick(index)}
-              //         >
-              //           <MoreVertIcon />
-              //         </IconButton>
-              //       }
-              //       title={penulisMap[artikel.user_id] || ""}
-              //       subheader={`${calculateTimeAgo(artikel.updated_at)}`}
-              //     />
-              //     <Link
-              //       className="text-decoration-none"
-              //       href={`/view/${artikel.slug}`}
-              //     >
-              //       <CardMedia>
-              //         <Image
-              //           src={
-              //             artikel.media
-              //               ? `${publicApi}/${artikel.media}`
-              //               : "/assets/img/logo_epic2.png"
-              //           }
-              //           alt="Gambar Artikel"
-              //           width={300}
-              //           height={200}
-              //           style={{ objectFit: "cover", width: "100%" }}
-              //         />
-              //       </CardMedia>
->>>>>>> 8a08117972a68475f0c8f8aff9b89330fcde1ab9
-
-              //       <CardContent className="mt-2">
-              //         <Typography
-              //           variant="body2"
-              //           color="text.secondary"
-              //           sx={
-              //             window.innerWidth <= 600
-              //               ? {
-              //                   fontSize: "11pt",
-              //                   fontWeight: "bold",
-              //                   lineHeight: "1",
-              //                   color: "rgba(0,0,0,0.5)",
-              //                 }
-              //               : {
-              //                   fontSize: "14pt",
-              //                   fontWeight: "bold",
-              //                   lineHeight: "1",
-              //                   color: "rgba(0,0,0,0.5)",
-              //                 }
-              //           }
-              //           gutterBottom
-              //         >
-              //           {potongDiSpasi(filterHTMLTags(artikel.judul), 45)}
-              //         </Typography>
-              //       </CardContent>
-              //     </Link>
-              //     <CardActions disableSpacing>
-              //       {/* <IconButton aria-label="add to favorites">
-              //         <FavoriteIcon />
-              //       </IconButton> */}
-              //       <IconButton
-              //         aria-label="share"
-              //         onClick={() =>
-              //           handleShareClick(artikel.judul, artikel.slug)
-              //         }
-              //       >
-              //         <ShareIcon className="color-app2" />
-              //       </IconButton>
-
-              //       <IconButton
-              //         className="color-app"
-              //         aria-label="show more"
-              //         onClick={() => handleExpandClick(index)}
-              //         aria-expanded={expandedMap[index]}
-              //       >
-              //         <ExpandMoreIcon />
-              //       </IconButton>
-              //     </CardActions>
-              //     <Collapse
-              //       in={expandedMap[index]}
-              //       timeout="auto"
-              //       unmountOnExit
-              //     >
-              //       <CardContent>
-              //         <Typography paragraph>
-              //           Deskripsi :{" "}
-              //           {potongDiSpasi(
-              //             filterHTMLTags(artikel.isi),
-              //             window.innerWidth > 600 ? 150 : 100
-              //           )}
-              //         </Typography>
-              //         {/* ... Other content ... */}
-              //       </CardContent>
-              //     </Collapse>
-              //   </Card>
-              // </Grid>
-            ))}
-          </Grid>
-        </>
+                    {potongDiSpasi(filterHTMLTags(artikel.judul), 45)}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       )}
-
-      {/* <div className="mb-3">
-        {hasMore ? (
-          <Button
-            className="btn btn-outline-dark btn-sm"
-            color="inherit"
-            onClick={() => {
-              nextView();
-            }}
-            //   endIcon={<ArrowRightIcon />}
-            size="small"
-            variant="text"
-            style={{ margin: "20px" }}
-          >
-            Next View
-            <PlayArrowIcon />
-          </Button>
-        ) : (
-          ""
-        )}
-      </div> */}
     </InfiniteScroll>
   );
 };

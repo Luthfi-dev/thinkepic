@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { useEffect, useState } from "react";
 import { kategoriApiUser, publicApi } from "../../utils/globals";
@@ -11,8 +11,8 @@ import TabScroll from "@/components/RootApp/NavCategory2";
 import { CardListArtikel } from "@/components/RootApp/CardListArtikel";
 
 const imageLoader = ({ src, width, quality }) => {
-  return `${src}?w=${width}&q=${quality || 75}`
-}
+  return `${src}?w=${width}&q=${quality || 75}`;
+};
 
 const HomeIndex = () => {
   const router = useRouter();
@@ -62,10 +62,10 @@ const HomeIndex = () => {
         /> */}
         <TabScroll pKategori={setPilihKategori} categories={categories} />
       </div>
-    <Image 
-                                src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
-                                loader={imageLoader}
-                                alt="" layout="fill" className="img symbol  "/>
+      {/* <Image 
+    src={'https://thinkepic.id/apiapp/media/1695206675932_image.jpg'}
+    loader={imageLoader}
+    alt="" layout="fill" className="img symbol  "/> */}
       <div
         className="container-fluid col-md-8 mt-5"
         style={{ backgroundColor: "#F5F6F8", borderRadius: "10px" }}
